@@ -25,7 +25,6 @@ const INITIAL_STATE = [
 ]
 
 
-
 function App() {
 	const [subs, setSubs] = useState<AppState['subs']>([])
 	const [newSubsNumber, setNewSubsNumber] = useState<AppState['newSubsNumber']>(0)
@@ -40,6 +39,7 @@ function App() {
 
 	const handleNewSub = (newSub: Sub): void => {
 		setSubs(subs => [...subs, newSub])
+		setNewSubsNumber(n => n + 1)
 	}
 
 
@@ -47,6 +47,7 @@ function App() {
 		<div ref={divRef}>
 			<h1>deiv subs</h1>
 			<List subs={subs} />
+			New subs: {newSubsNumber}
 			<Form onNewSub={handleNewSub} />
 		</div>
 	)
